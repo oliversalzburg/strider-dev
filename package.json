@@ -1,0 +1,28 @@
+{
+  "name": "strider-dev",
+  "version": "1.0.0",
+  "description": "Development Helpers for Strider",
+  "main": "index.js",
+  "scripts": {
+    "test": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oliversalzburg/strider-dev.git"
+  },
+  "keywords": [
+    "strider"
+  ],
+  "author": "Oliver Salzburg <oliver.salzburg@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oliversalzburg/strider-dev/issues"
+  },
+  "homepage": "https://github.com/oliversalzburg/strider-dev#readme",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "execa": "^0.4.0",
+    "got": "^6.3.0",
+    "minimist": "^1.2.0"
+  }
+}

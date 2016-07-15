@@ -1,0 +1,8 @@
+# WebStorm local workspace state
+.idea/workspace.xml
+
+# Test directory for run configurations
+.testing/
+
+# npm modules
+node_modules/
