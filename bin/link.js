@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-"use strict";
+'use strict';
 
-const Promise = require("bluebird");
+const Promise = require('bluebird');
 
 const argv = require("minimist")(process.argv.slice(2));
 const attemptRequire = require("attempt-require");
@@ -20,7 +20,7 @@ fs.readdirAsync(process.cwd())
     path: path.resolve(process.cwd(), projectDirectory)
   }))
   .map(project => linkProject(project.name, project.path), {concurrency: 1})
-  .then(() => console.log("Done."))
+  .then(() => console.log('Done.'))
   .catch(error => {
     console.error(error);
   });
@@ -29,7 +29,7 @@ function linkProject(name, projectPath) {
   console.log(`  ${name} → ${projectPath}'…`);
 
   // We assume that we are in a FairManager project directory.
-  const packageJsonPath = path.resolve(projectPath, "package.json");
+  const packageJsonPath = path.resolve(projectPath, 'package.json');
   const packageJson = attemptRequire(packageJsonPath);
 
   if (!packageJson) {
@@ -38,7 +38,7 @@ function linkProject(name, projectPath) {
   }
 
   const projectsRoot = process.cwd();
-  const linkPromise = argv.check ? Promise.resolve() : Promise.resolve(execa("npm", ["link"], {
+  const linkPromise = argv.check ? Promise.resolve() : Promise.resolve(execa('npm', ['link'], {
     cwd: projectPath
   }));
 
@@ -47,11 +47,11 @@ function linkProject(name, projectPath) {
     // Remove projects where the name starts with a dot.
     .filter(projectDirectory => !/^\./.test(projectDirectory))
     // Remove projects that don't have a package.json.
-    .filter(projectDirectory => fs.existsSync(path.resolve(process.cwd(), projectDirectory, "package.json")))
+    .filter(projectDirectory => fs.existsSync(path.resolve(process.cwd(), projectDirectory, 'package.json')))
     // Process project.
     .map(projectDirectory => {
       const projectWorkingDirectory = path.resolve(process.cwd(), projectDirectory);
-      const projectPackageJsonPath = path.resolve(projectWorkingDirectory, "package.json");
+      const projectPackageJsonPath = path.resolve(projectWorkingDirectory, 'package.json');
       const projectPackageJson = attemptRequire(projectPackageJsonPath);
       if (!projectPackageJson) {
         console.error(`    Unable to read '${projectPackageJsonPath}'. Project '${projectDirectory}' is skipped.`);
@@ -76,7 +76,7 @@ function linkProject(name, projectPath) {
 
       console.log(`    '${projectDirectory}': Linking…`);
 
-      return execa("npm", ["link", packageJson.name], {
+      return execa('npm', ['link', packageJson.name], {
         cwd: projectWorkingDirectory
       });
     })
