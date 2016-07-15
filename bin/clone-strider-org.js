@@ -8,7 +8,7 @@ const argv = require('minimist')(process.argv.slice(2));
 const execa = require('execa');
 const got = require('got');
 
-const STRIDER_ORG_REPOS = 'https://api.github.com/orgs/strider-cd/repos';
+const STRIDER_ORG_REPOS = 'https://api.github.com/orgs/strider-cd/repos?per_page=200';
 const CONCURRENT_JOBS = argv.jobs || 6;
 
 console.log('Cloning all repositories in the strider-cd organization…');
