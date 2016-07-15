@@ -1,3 +1,5 @@
+# Dropped due to WebStorm bug, should not be there
+.idea/deployment.xml
 # WebStorm local workspace state
 .idea/workspace.xml
 
