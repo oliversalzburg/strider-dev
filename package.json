@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/oliversalzburg/strider-dev#readme",
   "dependencies": {
+    "attempt-require": "^1.0.0",
     "bluebird": "^3.4.1",
     "execa": "^0.4.0",
     "got": "^6.3.0",
