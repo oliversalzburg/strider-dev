@@ -25,5 +25,8 @@
     "execa": "^0.4.0",
     "got": "^6.3.0",
     "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.0.1"
   }
 }
