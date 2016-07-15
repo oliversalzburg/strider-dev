@@ -5,6 +5,7 @@ Clones all repositories in the **strider-cd** GitHub organization into the curre
 
 - `--https` Use HTTPS for the cloning process. The default is to use the SSH URL.
 - `--jobs=n` Set the amount of concurrent cloning processes to run. Default is **6**.
+- `--verbose` More diagnostic output.
 
 ## `link`
 Links (in terms of [`npm link`](https://docs.npmjs.com/cli/link)) all projects in the current working directory with each other.
