@@ -20,7 +20,10 @@ fs.readdirAsync(process.cwd())
     path: path.resolve(process.cwd(), projectDirectory)
   }))
   .map(project => linkProject(project.name, project.path), {concurrency: 1})
-  .then(() => console.log("Done."));
+  .then(() => console.log("Done."))
+  .catch(error => {
+    console.error(error);
+  });
 
 function linkProject(name, projectPath) {
   console.log(`  ${name} → ${projectPath}'…`);
@@ -76,5 +79,8 @@ function linkProject(name, projectPath) {
       return execa("npm", ["link", packageJson.name], {
         cwd: projectWorkingDirectory
       });
+    })
+    .catch(error => {
+      console.error(`    ERROR: ${error.stderr.substr(0, 74)}`)
     });
 }
