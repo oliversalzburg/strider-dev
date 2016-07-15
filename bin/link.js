@@ -35,7 +35,9 @@ function linkProject(name, projectPath) {
   }
 
   const projectsRoot = process.cwd();
-  const linkPromise = argv.check ? Promise.resolve() : Promise.resolve(execa("npm", ["link"]));
+  const linkPromise = argv.check ? Promise.resolve() : Promise.resolve(execa("npm", ["link"], {
+    cwd: projectPath
+  }));
 
   return linkPromise
     .then(() => fs.readdirAsync(projectsRoot))
