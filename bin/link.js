@@ -4,21 +4,15 @@
 
 const Promise = require('bluebird');
 
-const argv = require("minimist")(process.argv.slice(2));
-const attemptRequire = require("attempt-require");
-const execa = require("execa");
-const fs = Promise.promisifyAll(require("fs"));
-const path = require("path");
+const argv = require('minimist')(process.argv.slice(2));
+const attemptRequire = require('attempt-require');
+const execa = require('execa');
+const fs = Promise.promisifyAll(require('fs'));
+const path = require('path');
+const projects = require('../lib/projects');
 
-console.log("Linking… (this might take a while)");
-fs.readdirAsync(process.cwd())
-  .filter(entry => fs.statAsync(entry)
-    .then(stat => stat.isDirectory())
-  )
-  .map(projectDirectory => ({
-    name: projectDirectory,
-    path: path.resolve(process.cwd(), projectDirectory)
-  }))
+console.log('Linking… (this might take a while)');
+projects(process.cwd())
   .map(project => linkProject(project.name, project.path), {concurrency: 1})
   .then(() => console.log('Done.'))
   .catch(error => {
