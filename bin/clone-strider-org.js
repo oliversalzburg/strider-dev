@@ -37,7 +37,7 @@ function cloneRepo(repo) {
 
       const urlToUse = argv.https ? repo.clone_url : repo.ssh_url;
 
-      return execa('git', ['clone', urlToUse])
+      return Promise.resolve(execa('git', ['clone', urlToUse]))
         .return(true);
     });
 }
