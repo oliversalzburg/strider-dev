@@ -10,7 +10,7 @@ const execa = require("execa");
 const fs = Promise.promisifyAll(require("fs"));
 const path = require("path");
 
-console.log("Linking…");
+console.log("Linking… (this might take a while)");
 fs.readdirAsync(process.cwd())
   .filter(entry => fs.statAsync(entry)
     .then(stat => stat.isDirectory())
