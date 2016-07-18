@@ -5,7 +5,7 @@
 const Promise = require('bluebird');
 
 const argv = require('minimist')(process.argv.slice(2));
-const copy = Promise.promisify(require('copy'));
+const copy = require('../lib/copy');
 const path = require('path');
 const projects = require('../lib/projects');
 
@@ -19,8 +19,13 @@ const FILES_TO_DEPLOY = [
   '.eslintrc'
 ].map(file => ({
   file: file,
-  path: path.resolve(process.cwd(), FROM, file)
+  path: path.join(process.cwd(), FROM, file)
 }));
+
+console.log(`Files to install from '${FROM}':`);
+FILES_TO_DEPLOY.forEach(file => {
+  console.log(`→ ${file.file}`);
+});
 
 projects(process.cwd(), true)
   .map(project => deployCodeStyle(project.name, project.path), {concurrency: 1})
@@ -30,8 +35,8 @@ projects(process.cwd(), true)
   });
 
 function deployCodeStyle(project, projectPath) {
-  console.log(` ${project}: Installing…`);
+  console.log(`  ${project}: Installing…`);
   return Promise.map(FILES_TO_DEPLOY, toDeploy => {
-    return copy(toDeploy.path, path.resolve(projectPath, toDeploy.file));
+    return copy(toDeploy.path, path.join(projectPath, toDeploy.file));
   });
 }
