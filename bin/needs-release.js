@@ -9,7 +9,15 @@ const execa = require('execa');
 const fs = Promise.promisifyAll(require('fs'));
 const got = require('got');
 
-const STRIDER_ORG_REPOS = 'https://api.github.com/orgs/strider-cd/repos?per_page=200';
+const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
+
+if (!GITHUB_ACCESS_TOKEN) {
+  console.error('GITHUB_ACCESS_TOKEN missing. Create one at https://github.com/settings/tokens and set the environment variable.');
+  process.exit(1);
+}
+
+const STRIDER_ORG_REPOS = `https://api.github.com/orgs/strider-cd/repos?per_page=200&access_token=${GITHUB_ACCESS_TOKEN}`;
+
 
 console.log('Checking for repos with commits after latest tag…');
 got(STRIDER_ORG_REPOS, {json: true})
@@ -23,7 +31,7 @@ got(STRIDER_ORG_REPOS, {json: true})
 
 function testRepo(repo) {
   console.log(`  ${repo.name}:`);
-  return Promise.resolve(got(`https://api.github.com/repos/strider-cd/${repo.name}/tags`, {json: true}))
+  return Promise.resolve(got(`https://api.github.com/repos/strider-cd/${repo.name}/tags?access_token=${GITHUB_ACCESS_TOKEN}`, {json: true}))
     .then(response => {
       const tags = response.body;
       if (!tags || !tags.length) {
@@ -38,6 +46,8 @@ function testRepo(repo) {
             console.log(`    RELEASE: SHA mismatch: ${commits[0].sha} - ${tags[0].commit.sha}`);
             return true;
           }
+
+          console.log('    All done!');
 
           return false;
         });
