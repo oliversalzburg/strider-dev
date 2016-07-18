@@ -1,6 +1,6 @@
 # Development Helpers for Strider
 
-## `clone-strider-org`
+## `clone`
 Clones all repositories in the **strider-cd** GitHub organization into the current working directory.
 
 - `--https` Use HTTPS for the cloning process. The default is to use the SSH URL.
