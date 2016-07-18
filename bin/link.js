@@ -12,7 +12,7 @@ const path = require('path');
 const projects = require('../lib/projects');
 
 console.log('Linking… (this might take a while)');
-projects(process.cwd())
+projects(process.cwd(), true)
   .map(project => linkProject(project.name, project.path), {concurrency: 1})
   .then(() => console.log('Done.'))
   .catch(error => {
@@ -22,7 +22,6 @@ projects(process.cwd())
 function linkProject(name, projectPath) {
   console.log(`  ${name} → ${projectPath}'…`);
 
-  // We assume that we are in a FairManager project directory.
   const packageJsonPath = path.resolve(projectPath, 'package.json');
   const packageJson = attemptRequire(packageJsonPath);
 

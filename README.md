@@ -14,3 +14,9 @@ the npm repository.
 
 - `--check` Perform a dry run, without actually linking the projects.
 - `--verbose` More diagnostic output.
+
+## `license`
+Checks the software licenses in all projects.  
+The script looks for the `license` field in the `package.json` and for files matching the pattern `/LICENSE/`.
+
+- `--verbose` More diagnostic output.

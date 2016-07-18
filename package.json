@@ -24,6 +24,7 @@
     "bluebird": "^3.4.1",
     "execa": "^0.4.0",
     "got": "^6.3.0",
+    "identify-licence": "0.0.1",
     "minimist": "^1.2.0"
   },
   "devDependencies": {
