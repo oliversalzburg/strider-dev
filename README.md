@@ -20,3 +20,6 @@ Checks the software licenses in all projects.
 The script looks for the `license` field in the `package.json` and for files matching the pattern `/LICENSE/`.
 
 - `--verbose` More diagnostic output.
+
+## `style`
+Copies code style definitions from one project (by default, `strider`) to all other projects.
