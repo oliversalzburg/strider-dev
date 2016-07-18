@@ -23,3 +23,11 @@ The script looks for the `license` field in the `package.json` and for files mat
 
 ## `style`
 Copies code style definitions from one project (by default, `strider`) to all other projects.
+
+## Instructions
+For some scripts, it may be useful to properly authenticate with GitHub, to avoid running into their API limit (some 
+scripts might even require this procedure).  
+Go to https://github.com/settings/tokens and register a new token, then set that token under the `GITHUB_ACCESS_TOKEN`
+environment variable.
+
+![](https://i.imgur.com/Q5dIwVA.png)
