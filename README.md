@@ -24,6 +24,10 @@ The script looks for the `license` field in the `package.json` and for files mat
 ## `style`
 Copies code style definitions from one project (by default, `strider`) to all other projects.
 
+- `--from=project` The name of the project to copy the style files from. Default is `strider`.
+- `--check-only` Only performs checks on the state of the project.
+- `--deploy-only` Only copies existing style documents without running checks.
+
 ## Instructions
 For some scripts, it may be useful to properly authenticate with GitHub, to avoid running into their API limit (some 
 scripts might even require this procedure).  
