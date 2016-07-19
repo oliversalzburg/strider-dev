@@ -28,6 +28,7 @@ FILES_TO_DEPLOY.forEach(file => {
 });
 
 projects(process.cwd(), true)
+  .filter(project => project.name !== FROM)
   .map(project => deployCodeStyle(project.name, project.path), {concurrency: 1})
   .then(() => console.log('Done.'))
   .catch(error => {
