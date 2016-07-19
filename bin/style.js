@@ -23,10 +23,12 @@ const FILES_TO_DEPLOY = [
   path: path.join(process.cwd(), FROM, file)
 }));
 
-console.log(`Files to install from '${FROM}':`);
-FILES_TO_DEPLOY.forEach(file => {
-  console.log(`→ ${file.file}`);
-});
+if (!argv['check-only']) {
+  console.log(`Files to install from '${FROM}':`);
+  FILES_TO_DEPLOY.forEach(file => {
+    console.log(`→ ${file.file}`);
+  });
+}
 
 projects(process.cwd(), true)
   .filter(project => project.name !== FROM)
@@ -57,12 +59,29 @@ function checkProjectState(project, projectPath) {
   }
 
   return checkBadFile('.jshintrc')
-    .then(() => checkBadFile('Makefile'));
+    .then(() => checkBadFile('Makefile'))
+    .then(checkEngines);
 
   function checkBadFile(file) {
     return fs.statAsync(path.join(projectPath, file))
       .then(() => console.log(`    ${file} found!`))
       .catch(Function.prototype);
+  }
+
+  function checkEngines() {
+    const packageJson = require(path.resolve(projectPath, 'package.json'));
+    if (!packageJson.engines) {
+      console.log('    No "engines" defined in package.json!');
+      return;
+    }
+
+    if (!packageJson.engines.node) {
+      console.log('    No "engines.node" defined in package.json!');
+      return;
+    }
+
+    if (packageJson.engines.node === '>=4.2') return;
+    console.log(`    "engines.node" is "${packageJson.engines.node}" Should be ">=4.2"!`);
   }
 }
 
