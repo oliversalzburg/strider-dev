@@ -1,4 +1,5 @@
 # Development Helpers for Strider
+[![Build Status](https://travis-ci.org/oliversalzburg/strider-dev.svg?branch=master)](https://travis-ci.org/oliversalzburg/strider-dev)
 
 ## `clone`
 Clones all repositories in the **strider-cd** GitHub organization into the current working directory.
