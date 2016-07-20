@@ -4,9 +4,6 @@
 
 const Promise = require('bluebird');
 
-const argv = require('minimist')(process.argv.slice(2));
-const execa = require('execa');
-const fs = Promise.promisifyAll(require('fs'));
 const got = require('got');
 
 const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
@@ -68,5 +65,5 @@ function testRepo(repo) {
         });
 
     })
-    .catch({statusCode: 403}, () => console.log(`    UNKNOWN: 403 error`));
+    .catch({statusCode: 403}, () => console.log('    UNKNOWN: 403 error'));
 }

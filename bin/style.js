@@ -47,7 +47,7 @@ function deployCodeStyle(project, projectPath) {
     return Promise.resolve();
   }
 
-  console.log(`    Deploying code style…`);
+  console.log('    Deploying code style…');
   return Promise.map(FILES_TO_DEPLOY, toDeploy => {
     return copy(toDeploy.path, path.join(projectPath, toDeploy.file));
   });

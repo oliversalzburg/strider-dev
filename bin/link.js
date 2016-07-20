@@ -74,6 +74,6 @@ function linkProject(name, projectPath) {
       });
     })
     .catch(error => {
-      console.error(`    ERROR: ${error.stderr.substr(0, 74)}`)
+      console.error(`    ERROR: ${error.stderr.substr(0, 74)}`);
     });
 }
