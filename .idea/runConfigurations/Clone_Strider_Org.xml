@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Clone Strider Org" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="$PROJECT_DIR$/bin/clone.js" working-dir="$PROJECT_DIR$/.testing">
+  <configuration default="false" name="Clone Strider Org" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="$PROJECT_DIR$/bin/clone.js" application-parameters="--https" working-dir="$PROJECT_DIR$/.testing">
     <profiling v8-profiler-path="" />
     <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
       <profiling v8-profiler-path="" />
