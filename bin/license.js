@@ -36,7 +36,7 @@ function checkPackageJson(name, projectPath) {
     }
 
   } else {
-    console.log('    package.json: ' + packageJson.license);
+    console.log(`    package.json: ${packageJson.license}`);
   }
 
   return Promise.resolve();
