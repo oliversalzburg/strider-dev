@@ -9,7 +9,7 @@ const got = require('got');
 const GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
 
 if (!GITHUB_ACCESS_TOKEN) {
-  console.error('GITHUB_ACCESS_TOKEN missing. Create one at https://github.com/settings/tokens and set the environment variable.');
+  console.error('GITHUB_ACCESS_TOKEN missing. Create one at https://github.com/settings/tokens (needs \'repo\' access) and set the environment variable.');
   process.exit(1);
 }
 

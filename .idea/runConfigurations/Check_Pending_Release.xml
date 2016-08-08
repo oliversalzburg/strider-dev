@@ -1,8 +1,5 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Check Pending Release" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" path-to-js-file="bin/needs-release.js" working-dir="$PROJECT_DIR$">
-    <envs>
-      <env name="GITHUB_ACCESS_TOKEN" value="" />
-    </envs>
     <profiling v8-profiler-path="" />
     <EXTENSION ID="com.jetbrains.nodejs.run.NodeJSProfilingRunConfigurationExtension">
       <profiling v8-profiler-path="" />

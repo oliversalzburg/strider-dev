@@ -8,6 +8,12 @@ Clones all repositories in the **strider-cd** GitHub organization into the curre
 - `--jobs=n` Set the amount of concurrent cloning processes to run. Default is **6**.
 - `--verbose` More diagnostic output.
 
+## `license`
+Checks the software licenses in all projects.  
+The script looks for the `license` field in the `package.json` and for files matching the pattern `/LICENSE/`.
+
+- `--verbose` More diagnostic output.
+
 ## `link`
 Links (in terms of [`npm link`](https://docs.npmjs.com/cli/link)) all projects in the current working directory with each other.
 This makes sure that you're using your local working directory of each project, instead of a fixed version pulled from
@@ -16,11 +22,10 @@ the npm repository.
 - `--check` Perform a dry run, without actually linking the projects.
 - `--verbose` More diagnostic output.
 
-## `license`
-Checks the software licenses in all projects.  
-The script looks for the `license` field in the `package.json` and for files matching the pattern `/LICENSE/`.
+## `needs-release`
+Checks for projects where the latest tag does not point to the latest commit.
 
-- `--verbose` More diagnostic output.
+This indicates that commits have been pushed to `master` after the last release, meaning that they're pending release.
 
 ## `style`
 Copies code style definitions from one project (by default, `strider`) to all other projects.
